@@ -50,4 +50,25 @@ public class StackTest {
 		Assert.assertEquals(null, stack.pop());
 	}
 	
+	@Test(expected=IllegalStateException.class)
+	public void whenMoreElementsThanStackMaxPushedThrowError() {
+		Stack<Integer> stack = new Stack<>();
+		stack.push(42);
+		stack.push(66);
+		stack.push(99);
+		stack.push(33);
+		stack.push(44);
+		stack.push(78);
+		stack.push(57);
+		stack.push(98);
+		stack.push(25);
+		stack.push(84);
+		stack.push(26);
+		stack.push(24);
+		stack.push(20);
+		stack.push(30);
+		stack.push(50);
+		stack.push(70); //16th element
+	}
+	
 }

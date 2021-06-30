@@ -9,6 +9,7 @@ import java.util.Arrays;
 public class Stack<T> {
 	
 	private static final int DEFAULT_LENGTH  = 10;
+	private static final int MAX_STACK  = 15;
 	
 	private int topIndex = -1; //holds the index of recently pushed element
 	
@@ -25,6 +26,9 @@ public class Stack<T> {
 	 * @param e
 	 */
 	public synchronized void push(T e) { 
+		
+		if(topIndex >= MAX_STACK-1) throw new IllegalStateException("Stack overflown");
+		
 		if(this.topIndex >= this.data.length-1) { //if the array full, grow the array size
 			this.data = Arrays.copyOf(this.data, this.data.length + DEFAULT_LENGTH);
 		}
